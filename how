@@ -1,0 +1,123 @@
+Help on instance of PacketList in module scapy.plist:
+
+class PPaacckkeettLLiisstt(scapy.base_classes.BasePacketList)
+ |  Methods defined here:
+ |  
+ |  ____aadddd____(self, other)
+ |  
+ |  ____ggeettaattttrr____(self, attr)
+ |  
+ |  ____ggeettiitteemm____(self, item)
+ |  
+ |  ____ggeettsslliiccee____(self, *args, **kargs)
+ |  
+ |  ____iinniitt____(self, res=None, name='PacketList', stats=None)
+ |      create a packet list from a list of packets
+ |      res: the list of packets
+ |      stats: a list of classes that will appear in the stats (defaults to [TCP,UDP,ICMP])
+ |  
+ |  ____rreepprr____(self)
+ |  
+ |  aafftteerrggllooww(self, src=None, event=None, dst=None, **kargs)
+ |      Experimental clone attempt of http://sourceforge.net/projects/afterglow
+ |      each datum is reduced as src -> event -> dst and the data are graphed.
+ |      by default we have IP.src -> IP.dport -> IP.dst
+ |  
+ |  ccoonnvveerrssaattiioonnss(self, getsrcdst=None, **kargs)
+ |      Graphes a conversations between sources and destinations and display it
+ |      (using graphviz and imagemagick)
+ |      getsrcdst: a function that takes an element of the list and return the source and dest
+ |                 by defaults, return source and destination IP
+ |      type: output type (svg, ps, gif, jpg, etc.), passed to dot's "-T" option
+ |      target: filename or redirect. Defaults pipe to Imagemagick's display program
+ |      prog: which graphviz program to use
+ |  
+ |  ddiiffffpplloott(self, f, delay=1, lfilter=None, **kargs)
+ |      diffplot(f, delay=1, lfilter=None)
+ |      Applies a function to couples (l[i],l[i+delay])
+ |  
+ |  ddiissppllaayy(self)
+ |      deprecated. is show()
+ |  
+ |  ffiilltteerr(self, func)
+ |      Returns a packet list filtered by a truth function
+ |  
+ |  hheexxdduummpp(self, lfilter=None)
+ |      Same as nsummary(), except that packets are also hexdumped
+ |      lfilter: a truth function that decides whether a packet must be displayed
+ |  
+ |  hheexxrraaww(self, lfilter=None)
+ |      Same as nsummary(), except that if a packet has a Raw layer, it will be hexdumped
+ |      lfilter: a truth function that decides whether a packet must be displayed
+ |  
+ |  mmaakkee__lliinneedd__ttaabbllee(self, *args, **kargs)
+ |      Same as make_table, but print a table with lines
+ |  
+ |  mmaakkee__ttaabbllee(self, *args, **kargs)
+ |      Prints a table using a function that returs for each packet its head column value, head row value and displayed value
+ |      ex: p.make_table(lambda x:(x[IP].dst, x[TCP].dport, x[TCP].sprintf("%flags%"))
+ |  
+ |  mmaakkee__tteexx__ttaabbllee(self, *args, **kargs)
+ |      Same as make_table, but print a table with LaTeX syntax
+ |  
+ |  mmuullttiipplloott(self, f, lfilter=None, **kargs)
+ |      Uses a function that returns a label and a value for this label, then plots all the values label by label
+ |  
+ |  nnssuummmmaarryy(self, prn=None, lfilter=None)
+ |      prints a summary of each packet with the packet's number
+ |      prn:     function to apply to each packet instead of lambda x:x.summary()
+ |      lfilter: truth function to apply to each packet to decide whether it will be displayed
+ |  
+ |  nnzzppaaddddiinngg(self, lfilter=None)
+ |      Same as padding() but only non null padding
+ |  
+ |  ppaaddddiinngg(self, lfilter=None)
+ |      Same as hexraw(), for Padding layer
+ |  
+ |  ppddffdduummpp(self, filename=None, **kargs)
+ |      Creates a PDF file with a psdump of every packet
+ |      filename: name of the file to write to. If empty, a temporary file is used and
+ |                conf.prog.pdfreader is called
+ |  
+ |  pplloott(self, f, lfilter=None, **kargs)
+ |      Applies a function to each packet to get a value that will be plotted with GnuPlot. A gnuplot object is returned
+ |      lfilter: a truth function that decides whether a packet must be ploted
+ |  
+ |  ppssdduummpp(self, filename=None, **kargs)
+ |      Creates a multipage poscript file with a psdump of every packet
+ |      filename: name of the file to write to. If empty, a temporary file is used and
+ |                conf.prog.psreader is called
+ |  
+ |  rraawwhheexxdduummpp(self)
+ |      Prints an hexadecimal dump of each packet in the list
+ |  
+ |  rreeppllaaccee(self, *args, **kargs)
+ |      lst.replace(<field>,[<oldvalue>,]<newvalue>)
+ |      lst.replace( (fld,[ov],nv),(fld,[ov,]nv),...)
+ |        if ov is None, all values are replaced
+ |      ex:
+ |        lst.replace( IP.src, "192.168.1.1", "10.0.0.1" )
+ |        lst.replace( IP.ttl, 64 )
+ |        lst.replace( (IP.ttl, 64), (TCP.sport, 666, 777), )
+ |  
+ |  sseessssiioonnss(self, session_extractor=None)
+ |  
+ |  sshhooww(self, *args, **kargs)
+ |      Best way to display the packet list. Defaults to nsummary() method
+ |  
+ |  ssrr(self, multi=0)
+ |      sr([multi=1]) -> (SndRcvList, PacketList)
+ |      Matches packets in the list and return ( (matched couples), (unmatched packets) )
+ |  
+ |  ssuummmmaarryy(self, prn=None, lfilter=None)
+ |      prints a summary of each packet
+ |      prn:     function to apply to each packet instead of lambda x:x.summary()
+ |      lfilter: truth function to apply to each packet to decide whether it will be displayed
+ |  
+ |  ttiimmeesskkeeww__ggrraapphh = _packetlist_timeskew_graph(self, ip, **kargs)
+ |      Tries to graph the timeskew between the timestamps and real time for a given ip
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data and other attributes defined here:
+ |  
+ |  rreess = []
