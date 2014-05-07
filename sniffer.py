@@ -3,6 +3,13 @@
 
 from scapy.sendrecv import sniff
 from multiprocessing import Process
+import logging
+logging.basicConfig(
+    filename = "snifferlite.log",
+    format = "%(levelname)-10s %(asctime)s %(message)s",
+    level = logging.DEBUG
+    )
+logger = logging.getLogger('snifferlite.sniffprocess')
 
 
 class SnifferProcess(Process):
@@ -17,6 +24,9 @@ class SnifferProcess(Process):
         self.queue = queue
 
     def run(self):
-        while True:
-            pkts = sniff(iface=self.iface, filter=self._filter, count=1)
-            self.queue.put(pkts)
+        logger.debug('filter: ' + self._filter)
+        logger.debug('iface: '+ self.iface)
+        sniff(iface=self.iface, filter=self._filter, prn=self.processpacket)
+        
+    def processpacket(self, packet):
+        self.queue.put(packet)

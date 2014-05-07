@@ -1,0 +1,16 @@
+DEBUG      2014-05-07 17:26:44,716 lo0negtive
+DEBUG      2014-05-07 17:27:20,563 lo0negtive123
+DEBUG      2014-05-07 17:49:48,774 en0negtive
+DEBUG      2014-05-07 17:52:02,935 en1negtive
+DEBUG      2014-05-07 17:55:17,577 en1negtive
+DEBUG      2014-05-07 17:59:22,684 en1negtive
+DEBUG      2014-05-07 17:59:22,693 filter: not icmp and not arp
+DEBUG      2014-05-07 18:03:43,883 en1negtive
+DEBUG      2014-05-07 18:03:43,894 filter: not icmp and not arp
+DEBUG      2014-05-07 18:03:43,895 iface: en1
+DEBUG      2014-05-07 18:05:22,335 en1negtive
+DEBUG      2014-05-07 18:05:22,345 filter: not icmp and not arp
+DEBUG      2014-05-07 18:05:22,346 iface: en1
+DEBUG      2014-05-07 18:10:42,043 en1negtive
+DEBUG      2014-05-07 18:10:42,104 filter: not icmp and not arp
+DEBUG      2014-05-07 18:10:42,105 iface: en1
