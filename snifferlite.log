@@ -14,3 +14,89 @@ DEBUG      2014-05-07 18:05:22,346 iface: en1
 DEBUG      2014-05-07 18:10:42,043 en1negtive
 DEBUG      2014-05-07 18:10:42,104 filter: not icmp and not arp
 DEBUG      2014-05-07 18:10:42,105 iface: en1
+DEBUG      2014-06-04 10:39:06,488 filter: not icmp and not arp
+DEBUG      2014-06-04 10:39:06,488 iface: eth0
+DEBUG      2014-06-04 10:39:44,219 filter: not icmp and not arp
+DEBUG      2014-06-04 10:39:44,220 iface: eth0
+DEBUG      2014-06-04 10:40:31,888 filter: not icmp and not arp
+DEBUG      2014-06-04 10:40:31,889 iface: wlan0
+DEBUG      2014-06-04 11:23:38,230 filter: not icmp and not arp
+DEBUG      2014-06-04 11:23:38,251 iface: wlan0
+DEBUG      2014-06-04 11:24:24,663 filter: not icmp and not arp
+DEBUG      2014-06-04 11:24:24,664 iface: wlan0
+DEBUG      2014-06-04 11:24:47,244 filter: not icmp and not arp
+DEBUG      2014-06-04 11:24:47,245 iface: wlan0
+DEBUG      2014-06-04 11:26:25,937 filter: not icmp and not arp
+DEBUG      2014-06-04 11:26:25,938 iface: eth0
+DEBUG      2014-06-04 11:26:31,222 filter: not icmp and not arp
+DEBUG      2014-06-04 11:26:31,223 iface: eth0
+DEBUG      2014-06-04 11:26:38,799 filter: not icmp and not arp
+DEBUG      2014-06-04 11:26:38,799 iface: eth0
+DEBUG      2014-06-04 11:29:44,818 filter: not icmp and not arp
+DEBUG      2014-06-04 11:29:44,819 iface: eth0
+DEBUG      2014-06-04 11:30:00,726 filter: not icmp and not arp
+DEBUG      2014-06-04 11:30:00,726 iface: eth0
+DEBUG      2014-06-04 11:30:36,640 filter: not icmp and not arp
+DEBUG      2014-06-04 11:30:36,641 iface: eth0
+DEBUG      2014-06-04 11:31:04,426 filter: not icmp and not arp
+DEBUG      2014-06-04 11:31:04,427 iface: wlan0
+DEBUG      2014-06-04 11:31:43,776 filter: not icmp and not arp
+DEBUG      2014-06-04 11:31:43,777 iface: wlan0
+DEBUG      2014-06-04 11:32:31,775 filter: not icmp and not arp
+DEBUG      2014-06-04 11:32:31,776 iface: wlan0
+DEBUG      2014-06-04 11:34:56,180 filter: not icmp and not arp
+DEBUG      2014-06-04 11:34:56,180 iface: wlan0
+DEBUG      2014-06-04 11:35:29,222 filter: not icmp and not arp
+DEBUG      2014-06-04 11:35:29,223 iface: wlan0
+DEBUG      2014-06-04 11:36:30,977 filter: not icmp and not arp
+DEBUG      2014-06-04 11:36:30,978 iface: wlan0
+DEBUG      2014-06-04 11:39:08,463 filter: not icmp and not arp
+DEBUG      2014-06-04 11:39:08,463 iface: wlan0
+DEBUG      2014-06-04 11:40:10,045 filter: not icmp and not arp
+DEBUG      2014-06-04 11:40:10,046 iface: br0
+DEBUG      2014-06-04 11:40:59,377 filter: not icmp and not arp
+DEBUG      2014-06-04 11:40:59,378 iface: br0
+DEBUG      2014-06-04 11:42:05,897 filter: not icmp and not arp
+DEBUG      2014-06-04 11:42:05,898 iface: br0
+DEBUG      2014-06-04 11:44:43,664 filter: not icmp and not arp
+DEBUG      2014-06-04 11:44:43,665 iface: br0
+DEBUG      2014-06-04 11:44:53,127 filter: not icmp and not arp
+DEBUG      2014-06-04 11:44:53,128 iface: br0
+DEBUG      2014-06-04 11:46:11,320 filter: not icmp and not arp
+DEBUG      2014-06-04 11:46:11,320 iface: br0
+DEBUG      2014-06-04 11:50:36,317 filter: not icmp and not arp
+DEBUG      2014-06-04 11:50:36,319 iface: br0
+DEBUG      2014-06-04 11:53:17,583 filter: not icmp and not arp
+DEBUG      2014-06-04 11:53:17,584 iface: br0
+DEBUG      2014-06-04 11:53:55,385 filter: not icmp and not arp
+DEBUG      2014-06-04 11:53:55,385 iface: br0
+DEBUG      2014-06-04 11:54:09,349 filter: not icmp and not arp
+DEBUG      2014-06-04 11:54:09,349 iface: br0
+DEBUG      2014-06-04 11:57:14,670 filter: not icmp and not arp
+DEBUG      2014-06-04 11:57:14,670 iface: br0
+DEBUG      2014-06-04 12:03:39,377 filter: not icmp and not arp
+DEBUG      2014-06-04 12:03:39,378 iface: br0
+DEBUG      2014-06-04 12:16:12,302 filter: not icmp and not arp
+DEBUG      2014-06-04 12:16:12,303 iface: br0
+DEBUG      2014-06-04 12:16:53,177 filter: not icmp and not arp
+DEBUG      2014-06-04 12:16:53,177 iface: br0
+DEBUG      2014-06-04 12:18:11,301 filter: not icmp and not arp
+DEBUG      2014-06-04 12:18:11,302 iface: br0
+DEBUG      2014-06-04 12:19:44,586 filter: not icmp and not arp
+DEBUG      2014-06-04 12:19:44,587 iface: br0
+WARNING    2014-06-04 14:31:10,592 Mac address to reach destination not found. Using broadcast.
+WARNING    2014-06-04 14:32:29,068 wrong value: DNS.qdcount=8723
+WARNING    2014-06-04 14:32:29,094 DNS RR prematured end (ofs=7984, len=194)
+WARNING    2014-06-04 14:32:29,096 DNS RR prematured end (ofs=60440, len=194)
+WARNING    2014-06-04 15:34:06,672 Mac address to reach destination not found. Using broadcast.
+WARNING    2014-06-04 15:47:23,320 Mac address to reach destination not found. Using broadcast.
+WARNING    2014-06-04 15:49:22,293 wrong value: DNS.qdcount=8659
+WARNING    2014-06-04 15:49:22,322 DNS RR prematured end (ofs=4746, len=490)
+WARNING    2014-06-04 15:49:22,323 DNS RR prematured end (ofs=49702, len=490)
+WARNING    2014-06-04 15:54:43,708 Mac address to reach destination not found. Using broadcast.
+WARNING    2014-06-04 15:54:50,720 wrong value: DNS.qdcount=8696
+WARNING    2014-06-04 15:54:50,743 DNS RR prematured end (ofs=13953, len=194)
+WARNING    2014-06-04 15:54:50,745 DNS RR prematured end (ofs=62932, len=194)
+DEBUG      2014-06-04 15:56:33,772 br0negtive
+DEBUG      2014-06-04 15:58:48,372 br0negtive
+DEBUG      2014-06-04 16:01:02,492 br0negtive

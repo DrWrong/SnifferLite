@@ -7,6 +7,7 @@ from sniffer import SnifferProcess
 import multiprocessing
 import netifaces
 import logging
+from Queue import Queue
 from cli import sniffer_prepare
 logging.basicConfig(
     filename="snifferlite.log",
@@ -43,20 +44,20 @@ class StartQT4(QtGui.QMainWindow):
 # self.ui.lineEdit, QtCore.SIGNAL("editingFinished()"), self.get_filter)
 
     def start_sniffer(self):
-        self.clidict.interface = self.ui.interface_choice.currentText()
-        self.clidict.mode = self.ui.mode_choice.currentText()
-        self.clidict.filter = self.ui.lineEdit.text()
+        self.clidict.interface = str(self.ui.interface_choice.currentText())
+        self.clidict.mode = str(self.ui.mode_choice.currentText())
+        self.clidict.filter = str(self.ui.lineEdit.text())
         log.debug(self.clidict.interface + '' +
                   self.clidict.mode + '' + self.clidict.filter)
         sniffer_prepare(self.clidict)
-        self.sniff_queue = multiprocessing.JoinableQueue()
+        self.sniff_queue = Queue()
         sniffer = SnifferProcess(
             self.sniff_queue, iface=self.clidict.interface)
         sniffer.start()
         while True:
             item = self.sniff_queue.get()
 
-            self.ui.packet_list.addItem(str(item))
+            self.ui.packet_list.addItem(item.summary())
             QtGui.QApplication.processEvents()
 
 #    def get_interface(self, ifname):
@@ -71,7 +72,7 @@ class StartQT4(QtGui.QMainWindow):
 #        print(self.ui.lineEdit.text())
 
 
-def start():
+def start_gui():
     app = QtGui.QApplication(sys.argv)
     myapp = StartQT4()
     myapp.show()
@@ -79,4 +80,4 @@ def start():
 
 
 if __name__ == '__main__':
-    start()
+    start_gui()

