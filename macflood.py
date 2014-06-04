@@ -6,11 +6,11 @@ from random import randint
 from scapy.all import Ether, sendp
 import os
 import re
-from multiprocessing import Process
+from threading import Thread
 import time
 
 
-class MacFlood(Process):
+class MacFlood(Thread):
 
     """auth:DrWrong
        email: yuhangchaney@gmail

@@ -9,13 +9,15 @@ import netifaces
 import logging
 from cli import sniffer_prepare
 logging.basicConfig(
-    filename = "snifferlite.log",
-    format = "%(levelname)-10s %(asctime)s %(message)s",
-    level = logging.DEBUG
-    )
+    filename="snifferlite.log",
+    format="%(levelname)-10s %(asctime)s %(message)s",
+    level=logging.DEBUG
+)
 log = logging.getLogger('snifferlite.gui')
 
+
 class Param_To_Cli(object):
+
     def __init__(self):
         self.interface = ''
         self.mode = ''
@@ -38,17 +40,18 @@ class StartQT4(QtGui.QMainWindow):
 #        QtCore.QObject.connect(
 #            self.ui.mode_choice, QtCore.SIGNAL("activated(const QString&)"), self.get_mode)
 #        QtCore.QObject.connect(
-#            self.ui.lineEdit, QtCore.SIGNAL("editingFinished()"), self.get_filter)
-        
+# self.ui.lineEdit, QtCore.SIGNAL("editingFinished()"), self.get_filter)
 
     def start_sniffer(self):
         self.clidict.interface = self.ui.interface_choice.currentText()
         self.clidict.mode = self.ui.mode_choice.currentText()
         self.clidict.filter = self.ui.lineEdit.text()
-        log.debug(self.clidict.interface + '' + self.clidict.mode + '' + self.clidict.filter)
+        log.debug(self.clidict.interface + '' +
+                  self.clidict.mode + '' + self.clidict.filter)
         sniffer_prepare(self.clidict)
         self.sniff_queue = multiprocessing.JoinableQueue()
-        sniffer = SnifferProcess(self.sniff_queue, iface=self.clidict.interface)
+        sniffer = SnifferProcess(
+            self.sniff_queue, iface=self.clidict.interface)
         sniffer.start()
         while True:
             item = self.sniff_queue.get()
@@ -57,7 +60,7 @@ class StartQT4(QtGui.QMainWindow):
             QtGui.QApplication.processEvents()
 
 #    def get_interface(self, ifname):
-#        self.clidict.interface = ifname 
+#        self.clidict.interface = ifname
 #        print(ifname)
 #
 #    def get_mode(self, mode_name):
@@ -68,8 +71,12 @@ class StartQT4(QtGui.QMainWindow):
 #        print(self.ui.lineEdit.text())
 
 
-if __name__ == '__main__':
+def start():
     app = QtGui.QApplication(sys.argv)
     myapp = StartQT4()
     myapp.show()
     sys.exit(app.exec_())
+
+
+if __name__ == '__main__':
+    start()
